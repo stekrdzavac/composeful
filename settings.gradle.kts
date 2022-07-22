@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Composeful"
 include(":app")
+include(":composeful-button")

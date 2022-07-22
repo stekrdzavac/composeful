@@ -2,31 +2,28 @@ import com.stekrdzavac.android.bgparking.buildSrc.Dependencies
 import com.stekrdzavac.android.bgparking.buildSrc.Versions
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("kapt")
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
     compileSdk = 32
 
     defaultConfig {
-        applicationId = "com.stekrdzavac.android.composeful"
         minSdk = 23
         targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -50,7 +47,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":composeful-button"))
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.Compose.UI)
     implementation(Dependencies.Compose.foundation)
@@ -59,11 +55,6 @@ dependencies {
     implementation(Dependencies.Compose.preview)
     implementation(Dependencies.Compose.tooling)
     implementation(Dependencies.Compose.materialIconsExtended)
-    implementation(Dependencies.Lifecycle.runtime)
-    implementation(Dependencies.Lifecycle.viewModel)
-    implementation(Dependencies.Lifecycle.viewModelCompose)
-    implementation(Dependencies.Navigation.navigationCompose)
-    implementation(Dependencies.Activity.activityCompose)
     implementation(Dependencies.Test.junit)
     implementation(Dependencies.Test.Ext.junit)
     implementation(Dependencies.Test.espressoCore)
