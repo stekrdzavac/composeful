@@ -48,8 +48,7 @@ fun Greeting(
     var loading2 by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
     Column(modifier = Modifier
-        .fillMaxWidth()
-        .background(color = MaterialTheme.colors.error)){
+        .fillMaxWidth()){
 
         ProgressButton(
             onButtonClick = {
@@ -85,14 +84,6 @@ fun Greeting(
                 .wrapContentSize()
                 .align(CenterHorizontally)
         )
-
-        Divider(modifier = Modifier.height(4.dp))
-        
-        Text(text = "Some text",
-            modifier = Modifier
-                .padding(8.dp)
-                .background(color = MaterialTheme.colors.onPrimary)
-                .align(CenterHorizontally))
     }
 }
 
